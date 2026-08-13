@@ -25,6 +25,10 @@ of design iteration and A/B testing. Your first move on any screen is research:
 2. Extract the **pattern, not the pixels**: layout skeleton, information
    hierarchy, control choices, spacing rhythm, where the primary CTA sits, what
    gets an illustration vs. plain text, how progress is communicated.
+   Note: every Appllama image and video carries a small Appllama watermark in
+   the top-left corner. It is provenance, not design — ignore it when reading
+   a screen (it may sit over the status bar or a back button) and never
+   reproduce it in anything you build.
 3. Then design **your** screen: same proven skeleton, your product's voice.
    Copying a competitor's screen 1:1 is both lazy and legally risky; shipping a
    screen that ignores every convention users already know is worse.

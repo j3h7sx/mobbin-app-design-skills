@@ -31,14 +31,18 @@ step — this skill tells you what to study; that one tells you how to build.
 3. **Media URLs expire in ~1 hour.** Download/view what you study promptly.
    If links died mid-task, re-request that page for fresh ones — screen ids
    are durable, links are not.
-4. **Pagination is sequential.** Every list response carries `next_cursor`;
+4. **Ignore the watermark.** Every Appllama image and video carries a small
+   Appllama watermark in the top-left corner. It is provenance, not part of
+   the screen — don't let it skew your read of that corner (status bar,
+   back button, title), and never reproduce it in anything you build.
+5. **Pagination is sequential.** Every list response carries `next_cursor`;
    pass it back to continue. You cannot jump to page N — and a cursor only
    works for the same query that minted it. If a cursor errors, drop it and
    restart from page one.
-5. **If you hit a rate limit, wait it out.** The per-minute and per-day
+6. **If you hit a rate limit, wait it out.** The per-minute and per-day
    limits sit far above real research; on the rare hit, wait the stated
    time — don't retry-hammer.
-6. **Errors are instructions.** Tool errors are written to be acted on
+7. **Errors are instructions.** Tool errors are written to be acted on
    (expired cursor → restart; out of credits → tell the user their credits
    reset on the 1st and they can request more in Settings → Usage).
 
