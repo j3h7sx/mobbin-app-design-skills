@@ -104,7 +104,7 @@ https://mcp.appllama.io/mcp
 Add it as a custom connector in Claude, Cursor, Codex, or any MCP client
 and approve the connection with your Appllama account. MCP access is part
 of [Pro](https://appllama.io/pricing), credits reset in full on the 1st of each month. 
-One tool call = one credit;
+Every call spends one credit;
 `get_credits` is always free.
 
 ## Try it

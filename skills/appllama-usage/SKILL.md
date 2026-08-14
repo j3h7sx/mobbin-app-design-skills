@@ -21,7 +21,7 @@ step — this skill tells you what to study; that one tells you how to build.
 
 1. **Start with `get_credits` — it's free.** It tells you the balance,
    limits, and reset date. Pro includes 1,500 credits a month (they reset in
-   full on the 1st, UTC); every other tool call costs 1 credit.
+   full on the 1st, UTC); every other call spends 1 credit.
 2. **Go deep.** Design language lives in the whole journey, not a sample —
    walk every screen of the apps that matter for the task, images included.
    That is exactly what the library is for. The one thing that's against the
