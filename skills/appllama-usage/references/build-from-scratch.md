@@ -62,16 +62,16 @@ For EVERY screen, in journey order:
 
 1. Re-open your references for that screen type (your local board first;
    `search_screens` for gaps — both modes, they surface different screens).
-2. Build it following **appllama-design-skill** end to end (HIG fidelity,
+2. Build it following **appllama-app-design-skill** end to end (HIG fidelity,
    semantic colors, native controls, motion laws, state architecture).
 3. Generate image assets with the best image model available (imagegen /
    Higgsfield MCP or CLI / whatever is present) at the highest quality — one
-   style system for the whole app, per appllama-design-skill's
+   style system for the whole app, per appllama-app-design-skill's
    references/image-assets.md.
 4. **Simulator loop until flawless**: run on the iOS Simulator (or Android
    emulator), screenshot, actually look, exercise the motion frame by frame,
    check the Dynamic Island / safe areas / dark mode / Dynamic Type, fix,
-   repeat. The checklist lives in appllama-design-skill's
+   repeat. The checklist lives in appllama-app-design-skill's
    references/simulator-loop.md. A screen isn't done because it compiles —
    it's done when you can't find a flaw and it stands next to the top-3
    references without embarrassment.

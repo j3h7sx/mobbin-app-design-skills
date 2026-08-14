@@ -14,7 +14,7 @@ flows, and UI patterns, with revenue and download context. The MCP makes it
 an agent's research floor: **not just a research tool, a builder's tool.**
 You study what already wins, then you build something better.
 
-Pair this skill with **appllama-design-skill** for every design/implementation
+Pair this skill with **appllama-app-design-skill** for every design/implementation
 step — this skill tells you what to study; that one tells you how to build.
 
 ## Ground rules (read first)
@@ -78,7 +78,7 @@ mean, plus its closest siblings across the library.
 | Flow & element research; general research method | [references/research-methods.md](references/research-methods.md) |
 
 Both build playbooks end the same way: **the simulator loop from
-appllama-design-skill, repeated until you cannot find a flaw.** Research
+appllama-app-design-skill, repeated until you cannot find a flaw.** Research
 without that loop is decoration.
 
 ## Local reference boards

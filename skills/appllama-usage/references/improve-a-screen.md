@@ -7,7 +7,7 @@ simulator, not eyeballed in code.
 
 ## 1. Diagnose before you search
 
-Run the screen in the simulator and study it against appllama-design-skill's
+Run the screen in the simulator and study it against appllama-app-design-skill's
 definition-of-done checklist. Name the top 3 deficits precisely ("no visual
 hierarchy — three same-weight text rows", "dead motion — modal pops with no
 transition", "non-native segmented control"). The research pass is aimed at
@@ -40,7 +40,7 @@ should be checkable in a screenshot.
 
 ## 4. Rebuild and iterate (the loop)
 
-1. Implement against the spec using **appllama-design-skill** (typography
+1. Implement against the spec using **appllama-app-design-skill** (typography
    ramp, semantic colors both themes, native controls, Reanimated motion
    with the platform's curves, state kept boring).
 2. Asset gaps (illustration, empty-state art, icons beyond the symbol set):

@@ -41,7 +41,7 @@ design language, then build screens that hold up next to them.
 | Skill | What it does |
 |---|---|
 | [`appllama-usage`](skills/appllama-usage/SKILL.md) | The research engine: how to use the [Appllama MCP](https://mcp.appllama.io/mcp) like a design director — the full tool map, and the playbooks for building an app from scratch, improving an existing screen, and flow & element research. |
-| [`appllama-design-skill`](skills/appllama-design-skill/SKILL.md) | The build bar: native-feeling Expo / React Native screens — Apple HIG fidelity, semantic colors, native controls, Reanimated motion, perceived performance, generated image assets, and a simulator-verified iteration loop. |
+| [`appllama-app-design-skill`](skills/appllama-app-design-skill/SKILL.md) | The build bar: native-feeling Expo / React Native screens — Apple HIG fidelity, semantic colors, native controls, anti-slop discipline, Reanimated motion, perceived performance, generated image assets, and a full-motion simulator-verified iteration loop (whole flows recorded and scrubbed at 60 fps, not screenshots). |
 
 They are designed as a pair: **usage** decides what to study, **design**
 decides how to build, and both insist the loop only ends in a simulator
@@ -62,12 +62,22 @@ Variations:
 # install for specific agents, no prompts
 npx skills@latest add appllama/appllama-skills -a claude-code -a cursor -y
 
-# install one skill only
-npx skills@latest add appllama/appllama-skills --skill appllama-usage
-
 # install user-wide instead of per-project
 npx skills@latest add appllama/appllama-skills -g
 ```
+
+### Only want the app design skill?
+
+`appllama-app-design-skill` stands on its own — the native-quality build
+bar, anti-slop discipline, and the full-motion simulator loop work with or
+without the Appllama MCP connected:
+
+```bash
+npx skills@latest add appllama/appllama-skills --skill appllama-app-design-skill
+```
+
+(The same `--skill` flag installs only `appllama-usage` if you want just the
+research engine.)
 
 <details>
 <summary>Manual install</summary>

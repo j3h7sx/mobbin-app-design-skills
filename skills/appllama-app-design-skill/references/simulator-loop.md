@@ -13,8 +13,11 @@ is "cannot find a flaw", not "looks fine".
    do not trust memory of what you wrote.
 3. Interact: tap every control, type overlong text, background/foreground the
    app, rotate if supported.
-4. For motion: screen-record (`xcrun simctl io booted recordVideo m.mov`),
-   scrub frame-by-frame through the hero transition.
+4. For motion: screen-record the ENTIRE flow
+   (`xcrun simctl io booted recordVideo m.mov`) — not just the hero
+   transition. Watch it at full speed for feel, then scrub frame by frame.
+   Stills cannot catch a one-frame flash, a dropped spring, or a keyboard
+   jump-cut; only the recording can.
 5. Fix → relaunch → re-verify. Never batch more than a few fixes between
    looks; regressions hide in batches.
 
@@ -39,11 +42,19 @@ re-verify for free.
 - [ ] Dynamic Type at XL: no overlap, no clipped labels
 - [ ] Contrast: secondary text still readable in both themes
 
-**Motion**
+**Motion (evaluated on the full-flow recording, never on stills)**
 - [ ] Entrance plays once, correctly, on first mount (and NOT again on
       back-navigation)
-- [ ] Gesture follows the finger 1:1; release springs with velocity
-- [ ] Frame-by-frame: no pop at animation start/end, no double-render flash
+- [ ] Gesture follows the finger 1:1; release springs with velocity;
+      cancelling mid-gesture settles cleanly
+- [ ] Frame-by-frame: no pop at animation start/end, no double-render flash,
+      no one-frame white/wrong-theme/wrong-color frames during transitions
+- [ ] Every modal/sheet cycle recorded: present, drag, dismiss, cancel —
+      smooth in both directions
+- [ ] Keyboard appear AND dismiss recorded: layout glides with it, focused
+      input stays visible, nothing jump-cuts or reflows after settling
+- [ ] Sustained 60 fps through every transition of the flow (measure with
+      the perf monitor / Instruments, don't eyeball)
 - [ ] Reduce Motion enabled → spatial animations become fades
 
 **Interaction**

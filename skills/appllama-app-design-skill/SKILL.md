@@ -1,13 +1,13 @@
 ---
-name: appllama-design-skill
-description: Build native-feeling, benchmark-quality mobile app screens (Expo / React Native). Use when designing or implementing any mobile UI — screens, flows, onboarding, paywalls, tab bars, settings, empty states — or when polishing motion, typography, dark mode, or perceived performance. Enforces Apple HIG fidelity, semantic colors, native controls, purposeful Reanimated motion, a simulator-verified iteration loop, and a study-real-apps-first workflow (pairs with the Appllama MCP). Trigger on "build a screen", "make this screen better", "design the onboarding", "polish the UI", "make it feel native", or any mobile design/implementation task.
+name: appllama-app-design-skill
+description: Build native-feeling, benchmark-quality mobile app screens (Expo / React Native). Use when designing or implementing any mobile UI — screens, flows, onboarding, paywalls, tab bars, settings, empty states — or when polishing motion, typography, dark mode, or perceived performance. Enforces Apple HIG fidelity, semantic colors, native controls, anti-slop discipline, purposeful Reanimated motion, a full-motion simulator-verified iteration loop, and a study-real-apps-first workflow (pairs with the Appllama MCP). Trigger on "build a screen", "make this screen better", "design the onboarding", "polish the UI", "make it feel native", or any mobile design/implementation task.
 license: MIT
 metadata:
   author: Appllama (appllama.io)
-  version: 1.0.0
+  version: 1.1.0
 ---
 
-# Appllama Design Skill
+# Appllama App Design Skill
 
 You are building screens that will sit on a phone next to the best-designed apps
 in the world. The user will compare your output to those apps within seconds of
@@ -93,6 +93,43 @@ Violating any of them is a finding, not a style preference.
     `contentInsetAdjustmentBehavior="automatic"`. Use `useWindowDimensions`,
     never `Dimensions.get()`.
 
+## Anti-slop laws
+
+AI-built apps share a look, and users file it under "template" within seconds.
+Each of these is a *default ban* — there is always an override when the brand
+explicitly asks for the thing AND you can articulate why it fits this product.
+
+1. **No AI-default styling.** Purple/indigo gradient CTAs with a glow,
+   glassmorphism on every card, mesh-gradient heroes, confetti for minor
+   events, sparkles in headings — that is the model's house style, not
+   design. Your palette, materials, and layout come from the reference
+   screens you studied, never from the priors you'd reach for unprompted.
+2. **One accent, locked.** Pick one accent color and it is THE accent on
+   every screen — no blue CTA on one screen and teal on the next, no new hue
+   appearing in screen seven. Neutrals carry the app; the accent is spent
+   where the money is (primary action, active state, progress).
+3. **One grey family.** Warm greys or cool greys — never both in one app.
+4. **Shape lock.** One corner-radius scale, stated as a rule ("actions are
+   pills, cards 16, inputs 8") and never violated. Mixed radii without a
+   stated rule read as assembled-from-parts.
+5. **No emoji as iconography.** Icons are SF Symbols / Material Symbols
+   (fidelity law 3). Emoji appear only when the product's voice is genuinely
+   chat-native or playful — sparingly, in content, never in chrome.
+6. **One label per intent.** "Get started", "Start now", and "Begin" are the
+   same intent — pick one phrasing and use it everywhere it appears.
+7. **Emphasis stays in the family.** Emphasize a word with weight or italic
+   of the same typeface; injecting a serif word into a sans headline (or vice
+   versa) for visual interest is amateur.
+8. **Ship full state cycles, not the happy path.** Static-successful-state-
+   only is the default failure mode: skeletons must match the final layout's
+   shape, empty states are composed (and say how to fill them), errors are
+   inline and specific.
+9. **The slop pre-flight is mechanical.** Before any flow reaches the
+   simulator pass, count: distinct accent hues (must be 1), distinct corner
+   radii (all from the stated scale), emoji in UI chrome (0), gradients
+   without a brand reason (0), duplicate labels for one intent (0). A failed
+   count is a fix, not a judgment call.
+
 ## Motion laws
 
 Motion is the highest-leverage polish surface and the easiest to overdo.
@@ -164,14 +201,40 @@ A screen does not exist until you have seen it running. The loop:
 1. Implement → launch in the iOS Simulator (or Android emulator).
 2. Screenshot and **actually look**: alignment, optical centering, spacing
    rhythm, truncation with long content, dark mode, Dynamic Type at XL.
-3. Exercise the motion: record, scrub frame by frame if a transition looks
-   off. Watch content pass under the Dynamic Island and behind the tab bar.
+3. Run the **full-motion pass** below — screenshots prove layout; they prove
+   nothing about motion.
 4. Fix, relaunch, re-verify. Repeat until you cannot find a defect — then run
    the checklist in [references/simulator-loop.md](references/simulator-loop.md)
    once more.
 
 Do not declare a screen finished from code review alone. Do not stop at "looks
 fine" — stop at "cannot find a flaw at 100% zoom".
+
+### The full-motion pass (mandatory, per flow)
+
+Every flow is evaluated as **moving pictures in the simulator, never as
+stills**. Screen-record the entire flow end to end
+(`xcrun simctl io booted recordVideo flow.mov`), exercising ALL of it:
+
+- every screen transition, push/pop, tab switch
+- every modal and sheet: present, drag, dismiss — and cancel mid-drag
+- the keyboard, both directions: appear (does the layout glide, is the
+  focused input visible?) and dismiss (does anything jump-cut?)
+- every user interaction: press states, gesture follow-through, interrupted
+  gestures, rapid taps, scroll flings at the extremes
+
+Watch the recording **twice**: once at full speed for feel, once scrubbing
+frame by frame. You are hunting:
+
+- dropped or stuttered frames — the bar is a sustained **60 fps** through
+  every transition, measured, not vibed
+- one-frame flashes: white/unstyled first paint, wrong-theme frames mid-
+  transition, color pops where a surface briefly renders the wrong token
+- layout jumps, double-render pops, springs that clip or overshoot into
+  content, elements that reflow after appearing
+
+The whole recording must play like one native piece — smooth end to end,
+zero UX glitches. One glitchy frame means the flow is not done.
 
 ## Definition of done, per screen
 
@@ -180,8 +243,10 @@ fine" — stop at "cannot find a flaw at 100% zoom".
 - [ ] Light + dark mode verified in the simulator
 - [ ] Safe areas / Dynamic Island / home indicator verified
 - [ ] Long-content, empty, loading, and error states designed — not defaulted
-- [ ] Motion: entrances, presses, and transitions feel native; Reduce Motion
-      respected; 60 fps measured on the target device profile
+- [ ] Motion: the full flow screen-recorded and scrubbed — entrances,
+      presses, transitions, modals, keyboard — native feel, zero glitch or
+      wrong-color frames; Reduce Motion respected; 60 fps measured on the
+      target device profile
 - [ ] Dynamic Type XL doesn't break layout; text is selectable where useful
 - [ ] All tap targets ≥ 44pt; contrast passes in both themes
 - [ ] Assets: single style family, crisp at @3x, no compositing halos
