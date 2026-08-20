@@ -1,13 +1,14 @@
 ---
-name: appllama-app-design-skill
-description: Build native-feeling, benchmark-quality mobile app screens (Expo / React Native). Use when designing or implementing any mobile UI — screens, flows, onboarding, paywalls, tab bars, settings, empty states — or when polishing motion, typography, dark mode, or perceived performance. Enforces Apple HIG fidelity, semantic colors, native controls, anti-slop discipline, purposeful Reanimated motion, a full-motion simulator-verified iteration loop, and a study-real-apps-first workflow (pairs with the Appllama MCP). Trigger on "build a screen", "make this screen better", "design the onboarding", "polish the UI", "make it feel native", or any mobile design/implementation task.
+name: mobbin-app-design-skill
+description: Build native-feeling, benchmark-quality mobile app screens with Expo and React Native after studying real references through Mobbin. Use for screens, flows, onboarding, paywalls, navigation, settings, states, motion, typography, themes, accessibility, or perceived performance.
 license: MIT
 metadata:
-  author: Appllama (appllama.io)
-  version: 1.1.0
+  author: Appllama upstream, adapted by solodevmaxxing
+  upstream: Appllama/appllama-skills
+  version: 1.1.0-mobbin.1
 ---
 
-# Appllama App Design Skill
+# Mobbin App Design Skill
 
 You are building screens that will sit on a phone next to the best-designed apps
 in the world. The user will compare your output to those apps within seconds of
@@ -15,20 +16,18 @@ launching it. This skill defines the bar and the method for clearing it.
 
 ## The Prime Directive: study before you draw
 
-Never design a screen from imagination when you can study how top apps solved
-the same screen. Real, shipping, revenue-ranked apps encode thousands of hours
-of design iteration and A/B testing. Your first move on any screen is research:
+Study real product references before drawing a new screen. Shipping apps show
+the result of many design decisions in context. Start each screen with a
+focused reference pass:
 
-1. If the **Appllama MCP** is connected, pull real screens for the category and
-   screen type you are building (see the `appllama-usage` skill for the exact
-   research playbooks). Study 20–30 screens before writing a line of UI code.
+1. If the **Mobbin MCP** is connected, pull real screens or flows for the
+   category and task. Follow the `mobbin-usage` skill. Inspect the returned
+   images and keep the canonical Mobbin link for each selected reference.
 2. Extract the **pattern, not the pixels**: layout skeleton, information
    hierarchy, control choices, spacing rhythm, where the primary CTA sits, what
    gets an illustration vs. plain text, how progress is communicated.
-   Note: every Appllama image and video carries a small Appllama watermark in
-   the top-left corner. It is provenance, not design — ignore it when reading
-   a screen (it may sit over the status bar or a back button) and never
-   reproduce it in anything you build.
+   The Mobbin attribution strip is provenance outside the referenced screen.
+   Exclude it from the visual analysis and from the interface you build.
 3. Then design **your** screen: same proven skeleton, your product's voice.
    Copying a competitor's screen 1:1 is both lazy and legally risky; shipping a
    screen that ignores every convention users already know is worse.
@@ -238,8 +237,8 @@ zero UX glitches. One glitchy frame means the flow is not done.
 
 ## Definition of done, per screen
 
-- [ ] Studied 10+ real reference screens for this screen type (via Appllama
-      MCP when available) and can name the pattern you adopted
+- [ ] Studied enough real Mobbin screens or flows to reach a stable decision,
+      cited the selected references, and named the pattern adopted
 - [ ] Light + dark mode verified in the simulator
 - [ ] Safe areas / Dynamic Island / home indicator verified
 - [ ] Long-content, empty, loading, and error states designed — not defaulted

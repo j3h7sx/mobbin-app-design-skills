@@ -1,136 +1,114 @@
-<p align="center">
-  <a href="https://appllama.io">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://public.appllama.io/appllama-logo-dark.png">
-      <img src="https://public.appllama.io/appllama-logo-light.png" alt="Appllama" width="360">
-    </picture>
-  </a>
-</p>
+<div align="center">
 
-<h3 align="center">A builder, not just a researcher.</h3>
+# Mobbin App Design Skills
 
-<p align="center">
-  Agent skills that make AI agents genuinely good at building mobile apps —<br>
-  studied against the top-grossing apps, finished to a simulator-verified bar.
-</p>
+**Real product references from Mobbin. Native-quality mobile implementation.**
 
-<p align="center">
-  <a href="https://skills.sh/appllama/appllama-skills"><img src="https://skills.sh/b/appllama/appllama-skills" alt="skills.sh installs"></a>
-  <a href="https://appllama.io"><img src="https://img.shields.io/badge/Appllama-official-1a1a1a" alt="Appllama official"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="License: MIT"></a>
-</p>
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Mobbin MCP](https://img.shields.io/badge/reference_source-Mobbin-5B4DFF.svg)](https://mobbin.com/mcp)
+[![Unofficial fork](https://img.shields.io/badge/status-unofficial_fork-555.svg)](https://github.com/Appllama/appllama-skills)
 
-<p align="center">
-  <a href="https://appllama.io">appllama.io</a> ·
-  <a href="https://appllama.io/mcp">MCP</a> ·
-  <a href="https://x.com/appllamaio">X</a> ·
-  <a href="https://www.linkedin.com/company/appllama">LinkedIn</a> ·
-  <a href="https://www.producthunt.com/products/appllama">Product Hunt</a>
-</p>
+[Mobbin](https://mobbin.com) · [Mobbin MCP](https://mobbin.com/mcp) · [Upstream skills](https://github.com/Appllama/appllama-skills)
 
----
+</div>
 
-[Appllama](https://appllama.io) is the design library of top-grossing mobile
-apps — their real screens, flows, and UI patterns, with revenue and download
-context. These skills turn that library into an agent's working method:
-study every screen of the apps that already win, extract the category's
-design language, then build screens that hold up next to them.
+This is an unofficial fork of
+[`Appllama/appllama-skills`](https://github.com/Appllama/appllama-skills)
+for people who already have a Mobbin subscription.
 
-## The skills
+The fork keeps the upstream research-first build method. Mobbin supplies the
+screen and flow references through its official MCP server. The app-design
+skill then guides implementation, motion, accessibility, performance, and
+simulator review.
 
-| Skill | What it does |
+## Skills
+
+| Skill | Purpose |
 |---|---|
-| [`appllama-usage`](skills/appllama-usage/SKILL.md) | The research engine: how to use the [Appllama MCP](https://mcp.appllama.io/mcp) like a design director — the full tool map, and the playbooks for building an app from scratch, improving an existing screen, and flow & element research. |
-| [`appllama-app-design-skill`](skills/appllama-app-design-skill/SKILL.md) | The build bar: native-feeling Expo / React Native screens — Apple HIG fidelity, semantic colors, native controls, anti-slop discipline, Reanimated motion, perceived performance, generated image assets, and a full-motion simulator-verified iteration loop (whole flows recorded and scrubbed at 60 fps, not screenshots). |
+| [`mobbin-usage`](skills/mobbin-usage/SKILL.md) | Search Mobbin screens and flows, inspect the returned images, record canonical links, and turn reference patterns into design decisions. |
+| [`mobbin-app-design-skill`](skills/mobbin-app-design-skill/SKILL.md) | Build native-feeling Expo and React Native screens with semantic colors, native controls, deliberate motion, full states, and simulator verification. |
 
-They are designed as a pair: **usage** decides what to study, **design**
-decides how to build, and both insist the loop only ends in a simulator
-with a screen you can't fault.
+The skills work as a pair. `mobbin-usage` selects and studies references.
+`mobbin-app-design-skill` sets the build standard.
+
+## Requirements
+
+Mobbin MCP access is available on Mobbin Pro, Team, and Enterprise plans.
+Authorization uses the Mobbin account that owns the subscription.
 
 ## Install
 
-One command, from your project root — works with Claude Code, Cursor,
-Codex, and [70+ other agents](https://skills.sh):
+Run this command from your project root:
 
 ```bash
-npx skills@latest add appllama/appllama-skills
+npx skills@latest add j3h7sx/mobbin-app-design-skills
 ```
 
-Variations:
+Install only the Mobbin research skill:
 
 ```bash
-# install for specific agents, no prompts
-npx skills@latest add appllama/appllama-skills -a claude-code -a cursor -y
-
-# install user-wide instead of per-project
-npx skills@latest add appllama/appllama-skills -g
+npx skills@latest add j3h7sx/mobbin-app-design-skills --skill mobbin-usage
 ```
 
-### Only want the app design skill?
-
-`appllama-app-design-skill` stands on its own — the native-quality build
-bar, anti-slop discipline, and the full-motion simulator loop work with or
-without the Appllama MCP connected:
+Install only the mobile app-design skill:
 
 ```bash
-npx skills@latest add appllama/appllama-skills --skill appllama-app-design-skill
+npx skills@latest add j3h7sx/mobbin-app-design-skills --skill mobbin-app-design-skill
 ```
 
-(The same `--skill` flag installs only `appllama-usage` if you want just the
-research engine.)
-
-<details>
-<summary>Manual install</summary>
-
-Skills are plain directories — copy them into your agent's skills folder
-(`.claude/skills/` per project, `~/.claude/skills/` user-wide, or your
-harness's equivalent):
+## Connect Mobbin to Codex
 
 ```bash
-git clone https://github.com/appllama/appllama-skills
-cp -r appllama-skills/skills/* ~/.claude/skills/
+codex mcp add mobbin --url https://api.mobbin.com/mcp
+codex mcp login mobbin
 ```
 
-</details>
+The browser authorization screen will ask you to sign in to Mobbin. Other MCP
+clients can connect to the same server URL:
 
-## Connect the Appllama MCP
-
-The skills assume the Appllama MCP is connected:
-
-```
-https://mcp.appllama.io/mcp
+```text
+https://api.mobbin.com/mcp
 ```
 
-Add it as a custom connector in Claude, Cursor, Codex, or any MCP client
-and approve the connection with your Appllama account. MCP access is part
-of [Pro](https://appllama.io/pricing), credits reset in full on the 1st of each month. 
-Every call spends one credit;
-`get_credits` is always free.
+## What changed from upstream
+
+- Mobbin is the reference source for screens and flows.
+- Research uses Mobbin's `search_screens` and `search_flows` tools.
+- Every selected reference keeps its canonical Mobbin URL.
+- The playbooks use visual relevance and product fit instead of AppLlama
+  revenue, download, rating, credit, board, or element-taxonomy data.
+- The native build guidance and simulator loop remain based on the upstream
+  MIT-licensed skill.
 
 ## Try it
 
-With the MCP connected and the skills installed, ask your agent:
+> Build a symptom logging flow. Search Mobbin for comparable iOS flows first.
+> Show me the references and the pattern you selected before you write UI code.
 
-> Build me a habit tracker. Study the top-grossing habit apps first and
-> don't stop until every screen survives the simulator comparison.
+> Improve this paywall. Use Mobbin screens to diagnose its hierarchy, then run
+> the completed flow in the simulator and inspect the motion.
 
-> Make this screen better. *(paste a screenshot, code, or a "Copy Screen
-> ID" ref from appllama.io)*
+> Study how real iOS apps ask for notification permission. Cite every Mobbin
+> screen and flow used in the recommendation.
 
-> How do the best fitness apps structure onboarding — how long, what does
-> each step earn, and where does the paywall sit?
+## Research output
 
-## License
+Each research pass should leave a short, reviewable record:
 
-[MIT](LICENSE). The Appllama name, llama, and logo are trademarks of
-Antmind Ventures Private Limited — the license does not grant rights to
-use them.
+```text
+research/<topic>/
+  references.md   # Mobbin screen and flow links with one decision note each
+  patterns.md     # repeated conventions, useful differences, chosen direction
+```
 
----
+Temporary image URLs can expire. The Mobbin screen and flow URLs are the
+durable references.
 
-<p align="center">
-  Built by <a href="https://appllama.io">Appllama</a> — the design library of top-grossing apps.<br>
-  <a href="https://x.com/appllamaio">X</a> ·
-  <a href="https://www.linkedin.com/company/appllama">LinkedIn</a> ·
-  <a href="https://www.producthunt.com/products/appllama">Product Hunt</a>
-</p>
+## Attribution
+
+This project is based on
+[`Appllama/appllama-skills`](https://github.com/Appllama/appllama-skills) and
+uses its MIT-licensed build guidance. See [LICENSE](LICENSE).
+
+Mobbin is a trademark of its respective owner. This community fork is not an
+official Mobbin product and is not affiliated with Mobbin.
