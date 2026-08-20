@@ -5,7 +5,6 @@
 **Real product references from Mobbin. Native-quality mobile implementation.**
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Skills.sh](https://skills.sh/b/j3h7sx/mobbin-app-design-skills)](https://skills.sh/j3h7sx/mobbin-app-design-skills)
 [![Mobbin MCP](https://img.shields.io/badge/reference_source-Mobbin-5B4DFF.svg)](https://mobbin.com/mcp)
 [![Unofficial fork](https://img.shields.io/badge/status-unofficial_fork-555.svg)](https://github.com/Appllama/appllama-skills)
 
